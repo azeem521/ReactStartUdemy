@@ -20,20 +20,28 @@ const [amount,setamount]=useState('')
 
     const submit =(e)=>{
         e.preventDefault();
-        console.log(date);
-        console.log(title);
-        console.log(amount);
+        // console.log(date);
+        // console.log(title);
+        // console.log(amount);
+        const NewData={
+            title:title,
+            amount:amount,
+            date:date
+        }
+        console.log(NewData);
     }
 
   return (
     <div >
+        <form onSubmit={submit}>
         <label>Title</label>
         <input type='text' value={title} onChange={changeHandelerTitle} />
         <label>Date</label>
         <input type='date' value={date} onChange={changeHandelerDate} />
         <label>Amount</label>
         <input type='number' value={amount} onChange={changeHandelerAmount} />
-        <button onClick={submit} >See in console</button>
+        <button >See in console</button>
+        </form>
     </div>
   )
 }

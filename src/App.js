@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import ExpenseItem from './components/Expenses/ExpenseItem';
 import Expenses from './components/Expenses/Expenses';
+import ExpenseForm from './components/Expenses/ExpenseForm';
 
 function App() {
 
@@ -28,19 +29,20 @@ function App() {
   ];
 
   return (
-    <div className="App">{
+    <div className="App">
+      <ExpenseForm />
       <Expenses item={expenses} />
 
-      // expenses.map(item=>(
-      //   <ExpenseItem 
-      //   date={item.date}
+      {/* // expenses.map(item=>(
+      //   <ExpenseItem  */}
+      {/* //   date={item.date}
       //   title={item.title}
       //   amount={item.amount}
       //   />
       // )
 
-      // )
-    }
+      // ) */}
+    
       {/* <ExpenseItem items={expenses[1].title}></ExpenseItem> */}
     </div>
   );

@@ -1,12 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
-import ExpenseItem from './components/Expenses/ExpenseItem';
+// import ExpenseItem from './components/Expenses/ExpenseItem';
 import Expenses from './components/Expenses/Expenses';
-import ExpenseForm from './components/Expenses/ExpenseForm';
+// import ExpenseForm from './components/NewExpense/ExpenseForm';
+import NewExpenses from './components/NewExpense/NewExpenses';
+import { useState } from 'react';
 
-function App() {
+// const App=()=> {
 
-  const expenses = [
+  const exp = [
     {
       id: 'e1',
       title: 'Toilet Paper',
@@ -28,22 +30,21 @@ function App() {
     },
   ];
 
+  const App=()=> {
+
+    const [expenses,setExpenses]=useState(exp)
+
+  const addExpenseHandler =(expense)=>{
+    // console.log(expense);
+    const totalExpense=[expense,...expenses];
+    setExpenses(totalExpense)
+    
+  }
+
   return (
     <div className="App">
-      <ExpenseForm />
+      <NewExpenses onAddExpense={addExpenseHandler} />
       <Expenses item={expenses} />
-
-      {/* // expenses.map(item=>(
-      //   <ExpenseItem  */}
-      {/* //   date={item.date}
-      //   title={item.title}
-      //   amount={item.amount}
-      //   />
-      // )
-
-      // ) */}
-    
-      {/* <ExpenseItem items={expenses[1].title}></ExpenseItem> */}
     </div>
   );
 }

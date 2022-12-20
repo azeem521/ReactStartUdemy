@@ -7,9 +7,7 @@ const [date,setdate]=useState('')
 const [amount,setamount]=useState('')
     
     const changeHandelerTitle =(e)=>{
-        // console.log('changed', e.target.value);
         settitle(e.target.value);
-        // console.log(title);
     }
     const changeHandelerAmount =(e)=>{
         setamount(e.target.value);
@@ -20,15 +18,15 @@ const [amount,setamount]=useState('')
 
     const submit =(e)=>{
         e.preventDefault();
-        // console.log(date);
-        // console.log(title);
-        // console.log(amount);
         const NewData={
             title:title,
             amount:amount,
             date:date
         }
         console.log(NewData);
+        settitle('')
+        setamount('')
+        setdate('')
     }
 
   return (
@@ -40,7 +38,7 @@ const [amount,setamount]=useState('')
         <input type='date' value={date} onChange={changeHandelerDate} />
         <label>Amount</label>
         <input type='number' value={amount} onChange={changeHandelerAmount} />
-        <button >See in console</button>
+        <button >Save</button>
         </form>
     </div>
   )

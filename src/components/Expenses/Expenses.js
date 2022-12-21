@@ -14,7 +14,33 @@ const Expenses = (props) => {
 
   const filteredExpenses=props.item.filter((expense)=>{
     return expense.date.getFullYear().toString()===filteredYear;
-  })
+  });
+
+  let expensesContent=<p>No expense found.</p>;
+  if(filteredExpenses.length===1){
+    
+    expensesContent=
+    
+    filteredExpenses.map((expense)=>(
+      <ExpenseItem 
+      key={ expense.id }
+      date={ expense.date } 
+      title={ expense.title } 
+      amount={ expense.amount } 
+      />
+      
+     ))
+   }
+   if(filteredExpenses.length>1){
+    expensesContent=filteredExpenses.map((expense)=>(
+      <ExpenseItem 
+      key={ expense.id }
+      date={ expense.date } 
+      title={ expense.title } 
+      amount={ expense.amount } />
+      
+     ))
+   }
 
 
   return (
@@ -23,14 +49,10 @@ const Expenses = (props) => {
        selected={filteredYear}
        onChangeFilter={filterChangeHandler}
          />
-         {filteredExpenses.map((expense)=>(
-          <ExpenseItem 
-          key={ expense.id }
-          date={ expense.date } 
-          title={ expense.title } 
-          amount={ expense.amount } />
-          
-         ))}
+
+    {expensesContent}
+    {filteredExpenses.length===1 ? (<p>Only single Expense here. Please add more...</p>) : ''}
+         
          
          
     </Card>
